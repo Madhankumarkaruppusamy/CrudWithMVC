@@ -1,0 +1,65 @@
+﻿@model IEnumerable<DapperDataAccessLayer.Cricketer>
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<h1>View</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CricketerId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CricketerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalODI)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalScore)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fifties)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hundreds)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CricketerId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CricketerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalODI)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalScore)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fifties)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hundreds)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.CricketerId }) |
+                @Html.ActionLink("Details", "Details", new { id=item.CricketerId }) |
+                @Html.ActionLink("Delete", "Delete", new {id=item.CricketerId })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
