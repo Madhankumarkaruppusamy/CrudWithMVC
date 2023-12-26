@@ -10,7 +10,8 @@ namespace DapperDataAccessLayer
     {
         public void InsertSP(Cricketer details);
         public List<Cricketer> ReadSP();
+        public Cricketer ReadSPById(long CricketerId);
         public void UpdateSP(long number, Cricketer prd);
-        public void DeleteSP(long number);
+        public void DeleteSP(long CricketerId );
     }
 }

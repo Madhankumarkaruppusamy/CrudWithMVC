@@ -60,6 +60,31 @@ namespace DapperDataAccessLayer
             }
 
         }
+        public Cricketer ReadSPById(long CricketerId)
+        {
+            try
+            {
+                var con = new SqlConnection(connectionString);
+                con.Open();
+                var selectQuery = $"exec ReadSPById {CricketerId}";
+                var stats = con.QueryFirstOrDefault<Cricketer>(selectQuery);
+
+                con.Close();
+                return stats;
+
+
+            }
+            catch (SqlException sql)
+            {
+                throw;
+
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
+        }
 
 
         public void DeleteSP(long CricketerId)
