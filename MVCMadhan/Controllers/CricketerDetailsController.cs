@@ -5,16 +5,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DapperDataAccessLayer;
+using Microsoft.Extensions.Configuration;
 
 namespace MVCMadhan.Controllers
 {
     public class CricketerDetailsController : Controller
     {
         private readonly ICricketerRepository _obje;
-
-        public CricketerDetailsController()
+        private readonly string _connectionstring;
+        public CricketerDetailsController(ICricketerRepository result, IConfiguration configuration)
         {
-            _obje = new CricketerRepository();
+            _obje = result;
+            _connectionstring = configuration.GetConnectionString("DbConnection");
         }
         // GET: CricketerDetailsController
         public ActionResult Index()

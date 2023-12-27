@@ -3,13 +3,18 @@ using Dapper;
 using System.Data.SqlClient;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Extensions.Configuration;
 
 namespace DapperDataAccessLayer
 {
     public class CricketerRepository : ICricketerRepository
     {
 
-        string connectionString = "Data source=DESKTOP-BLBGEHJ\\SQLEXPRESS;initial catalog=batch7;user id=sa;password=Anaiyaan@123;";
+        public string connectionString;
+        public CricketerRepository(IConfiguration configuration)
+        {
+            connectionString = configuration.GetConnectionString("DbConnection");
+        }
         public void InsertSP(Cricketer details)
         {
             try
@@ -37,6 +42,7 @@ namespace DapperDataAccessLayer
 
         public List<Cricketer> ReadSP()
         {
+            
             try
             {
                 var con = new SqlConnection(connectionString);
