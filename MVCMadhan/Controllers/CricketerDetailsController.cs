@@ -11,24 +11,24 @@ namespace MVCMadhan.Controllers
 {
     public class CricketerDetailsController : Controller
     {
-        private readonly ICricketerRepository _obje;
+        private readonly ICricketerRepository _obj;
         private readonly string _connectionstring;
         public CricketerDetailsController(ICricketerRepository result, IConfiguration configuration)
         {
-            _obje = result;
+            _obj = result;
             _connectionstring = configuration.GetConnectionString("DbConnection");
         }
         // GET: CricketerDetailsController
         public ActionResult Index()
         {
-            var result = _obje.ReadSP();
+            var result = _obj.ReadSP();
             return View("View",result);
         }
 
         // GET: CricketerDetailsController/Details/5
         public ActionResult Details(int id)
         {
-            var result = _obje.ReadSPById(id);
+            var result = _obj.ReadSPById(id);
             return View("Details",result);
         }
 
@@ -41,12 +41,20 @@ namespace MVCMadhan.Controllers
         // POST: CricketerDetailsController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Cricketer pro)
+        public ActionResult Create(Cricketer add)
         {
             try
             {
-                _obje.InsertSP(pro);
-                return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid)
+                {
+                    _obj.InsertSP(add);
+                    return RedirectToAction(nameof(Index));
+
+                }
+                else
+                {
+                    return View("View",add);
+                }
             }
             catch
             {
@@ -57,18 +65,18 @@ namespace MVCMadhan.Controllers
         // GET: CricketerDetailsController/Edit/5
         public ActionResult Edit(long id)
         {
-            var result = _obje.ReadSPById(id);
+            var result = _obj.ReadSPById(id);
             return View("Edit",result);
         }
 
         // POST: CricketerDetailsController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(long id, Cricketer pro)
+        public ActionResult Edit(long id, Cricketer update)
         {
             try
             {
-                _obje.UpdateSP(id, pro);
+                _obj.UpdateSP(id, update);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -80,7 +88,7 @@ namespace MVCMadhan.Controllers
         // GET: CricketerDetailsController/Delete/5
         public ActionResult Delete(long id)
         {
-            var result = _obje.ReadSPById(id);
+            var result = _obj.ReadSPById(id);
             return View("Delete",result);
         }
 
@@ -91,7 +99,7 @@ namespace MVCMadhan.Controllers
         {
             try
             {
-                _obje.DeleteSP(id);
+                _obj.DeleteSP(id);
                 return RedirectToAction(nameof(Index));
             }
             catch
