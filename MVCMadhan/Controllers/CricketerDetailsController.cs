@@ -58,7 +58,7 @@ namespace MVCMadhan.Controllers
             }
             catch
             {
-                return View();
+                return View("Error");
             }
         }
 
@@ -81,7 +81,7 @@ namespace MVCMadhan.Controllers
             }
             catch
             {
-                return View();
+                return View("Error");
             }
         }
 
@@ -95,16 +95,16 @@ namespace MVCMadhan.Controllers
         // POST: CricketerDetailsController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(long id,Cricketer result)
+        public ActionResult Deletebynum(long cricketerId)
         {
             try
             {
-                _obj.DeleteSP(id);
+                _obj.DeleteSP(cricketerId);
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
-                return View();
+                return View("Error");
             }
         }
     }

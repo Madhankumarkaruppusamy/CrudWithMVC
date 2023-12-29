@@ -1,0 +1,14 @@
+﻿@model DapperDataAccessLayer.Cricketer
+
+<form asp-controller="Home"asp-action="Index">
+    <div class="mb-3 mt-3">
+        <label for="email" class="form-label">Email ID:</label>
+        <input type="text" class="form-control" id="EmailID" placeholder="Enter Your Email ID" name="Email">
+    </div>
+    <div class="mb-3">
+        <label for="pwd" class="form-label">Password:</label>
+        <input type="password" class="form-control" id="Password" placeholder="Enter Password" name="Password">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Login</button>
+</form>
