@@ -36,5 +36,7 @@ namespace DapperDataAccessLayer
         [Range(0, 50000, ErrorMessage = "Hundreds cannot be lesser than 0")]
         [Required(ErrorMessage = "Please Enter Your Hundreds")]
         public long Hundreds { get; set; }
+        public long LocationId { get; set; }
+        public List<Location> Location { get; set; }
     }
 }

@@ -12,10 +12,12 @@ namespace MVCMadhan.Controllers
     public class CricketerDetailsController : Controller
     {
         private readonly ICricketerRepository _obj;
+        private readonly ILocationRepository _obje;
         private readonly string _connectionstring;
-        public CricketerDetailsController(ICricketerRepository result, IConfiguration configuration)
+        public CricketerDetailsController(ICricketerRepository result,ILocationRepository model, IConfiguration configuration)
         {
             _obj = result;
+            _obje = model;
             _connectionstring = configuration.GetConnectionString("DbConnection");
         }
         // GET: CricketerDetailsController
@@ -35,7 +37,9 @@ namespace MVCMadhan.Controllers
         // GET: CricketerDetailsController/Create
         public ActionResult Create()
         {
-            return View("Create",new Cricketer ());
+            var model = new Cricketer();
+            model.Location = _obje.GetAllLocations().ToList();
+            return View("Create", model);
         }
 
         // POST: CricketerDetailsController/Create
