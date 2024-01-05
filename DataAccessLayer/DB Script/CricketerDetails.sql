@@ -18,14 +18,14 @@ DROP table CricketerDetails
 go
 Create PROCEDURE
 InsertSP(
-@CricketerName nvarchar(50), @TotalODI bigint,@TotalScore bigint ,@Fifties bigint,@Hundreds bigint)
+@CricketerName nvarchar(50), @TotalODI bigint,@TotalScore bigint ,@Fifties bigint,@Hundreds bigint,@LocationId bigint)
 as
 begin
-Insert into CricketerDetails values(@CricketerName, @TotalODI, @TotalScore, @Fifties, @Hundreds)
+Insert into CricketerDetails values(@CricketerName, @TotalODI, @TotalScore, @Fifties, @Hundreds,@LocationId)
 end
-exec InsertSP 'rohit',262,10709,55,31
-exec InsertSP 'virat',268,12789,55,50
-exec InsertSP 'dhoni',280,9788,45,20
+exec InsertSP 'Rohit',262,10709,55,31,4
+exec InsertSP 'Virat',268,12789,55,50,2
+exec InsertSP 'Dhoni',280,9788,45,20,1
 
 
 select * from CricketerDetails
@@ -89,10 +89,10 @@ begin
 insert into Location values (@LocationName)
 end
 
-exec InsertLocation Chennai
-exec InsertLocation Bangalore
-exec InsertLocation Kolkata
-exec InsertLocation Mumbai
-exec InsertLocation Hyderabad
+exec InsertLocation 'Chennai'
+exec InsertLocation 'Bangalore'
+exec InsertLocation 'Kolkata'
+exec InsertLocation 'Mumbai'
+exec InsertLocation 'Hyderabad'
 
 
