@@ -21,7 +21,7 @@ namespace DapperDataAccessLayer
             {
                 var con = new SqlConnection(connectionString);
                 con.Open();
-                var insertQuery = $"exec InsertSP @CricketerName='{details.CricketerName}', @TotalODI={details.TotalODI}, @TotalScore={details.TotalScore}, @Fifties={details.Fifties},@Hundreds={details.Hundreds} ";
+                var insertQuery = $"exec InsertSP @CricketerName='{details.CricketerName}', @TotalODI={details.TotalODI}, @TotalScore={details.TotalScore}, @Fifties={details.Fifties},@Hundreds={details.Hundreds},@LocationId={details.LocationId} ";
                 con.Execute(insertQuery);
                 con.Close();
 

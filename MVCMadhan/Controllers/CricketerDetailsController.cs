@@ -70,6 +70,7 @@ namespace MVCMadhan.Controllers
         public ActionResult Edit(long id)
         {
             var result = _obj.ReadSPById(id);
+            result.Location = _obje.GetAllLocations().ToList();
             return View("Edit",result);
         }
 

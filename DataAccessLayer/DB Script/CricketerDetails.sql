@@ -5,8 +5,11 @@ CricketerName nvarchar(50) not null,
 TotalODI bigint not null, 
 TotalScore bigint not null,
 Fifties bigint not null,
-Hundreds bigint not null
+Hundreds bigint not null,
+LocationId bigint not null 
 )
+
+
 select * from CricketerDetails
 DROP table CricketerDetails
 
@@ -68,3 +71,28 @@ begin
 delete CricketerDetails  where CricketerId=@CricketerId
 end
 exec DeleteSP 3
+
+
+Create Table Location
+(
+ LocationId bigint primary key identity(1,1),
+ LocationName nvarchar(60) not null
+)
+
+select * from location
+go 
+create procedure
+InsertLocation
+(@LocationName nvarchar(60))
+as
+begin
+insert into Location values (@LocationName)
+end
+
+exec InsertLocation Chennai
+exec InsertLocation Bangalore
+exec InsertLocation Kolkata
+exec InsertLocation Mumbai
+exec InsertLocation Hyderabad
+
+
