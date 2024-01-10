@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.34031.81
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MVCMadhan", "MVCMadhan\MVCMadhan.csproj", "{1008A202-C6B8-4504-89C8-9299B845F38B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DapperDataAccessLayer", "DataAccessLayer\DapperDataAccessLayer.csproj", "{BED3F0CE-088F-449B-B217-512464B08352}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DapperDataAccessLayer", "DataAccessLayer\DapperDataAccessLayer.csproj", "{BED3F0CE-088F-449B-B217-512464B08352}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework", "EntityFramework\EntityFramework.csproj", "{D3A63E27-1699-4B1E-8FB5-4B1C20F2483D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{BED3F0CE-088F-449B-B217-512464B08352}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BED3F0CE-088F-449B-B217-512464B08352}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BED3F0CE-088F-449B-B217-512464B08352}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3A63E27-1699-4B1E-8FB5-4B1C20F2483D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3A63E27-1699-4B1E-8FB5-4B1C20F2483D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3A63E27-1699-4B1E-8FB5-4B1C20F2483D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3A63E27-1699-4B1E-8FB5-4B1C20F2483D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
