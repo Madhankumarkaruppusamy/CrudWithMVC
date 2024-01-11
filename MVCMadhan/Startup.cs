@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DapperDataAccessLayer;
+using Microsoft.EntityFrameworkCore;
+using EntityFrameworkMVC;
 
 namespace MVCMadhan
 {
@@ -24,6 +26,8 @@ namespace MVCMadhan
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<DbContxt>(x => x.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
+            services.AddTransient<IRegistrationRepository, RegistrationRepository>();
             services.AddTransient<ILocationRepository, LocationRepository>();
             services.AddTransient<ICricketerRepository, CricketerRepository>();
             services.AddControllersWithViews();
@@ -58,3 +62,6 @@ namespace MVCMadhan
         }
     }
 }
+
+
+

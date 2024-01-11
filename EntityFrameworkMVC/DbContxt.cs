@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EntityFramework
+namespace EntityFrameworkMVC
 {
     public class DbContxt : DbContext
     {
-        public DbContxt(DbContextOptions options) : base(options)
+        public DbContxt(DbContextOptions<DbContxt> options) : base(options)
         {
 
         }

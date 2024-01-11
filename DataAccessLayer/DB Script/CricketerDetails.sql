@@ -33,14 +33,14 @@ select * from CricketerDetails
 
 --TO UPDATE
 go
-Create procedure UpdateSP(
-@CricketerId bigint ,@CricketerName nvarchar(50), @TotalODI bigint,@TotalScore bigint ,@Fifties bigint,@Hundreds bigint)
+create procedure UpdateSP(
+@CricketerId bigint ,@CricketerName nvarchar(50), @TotalODI bigint,@TotalScore bigint ,@Fifties bigint,@Hundreds bigint,@LocationId bigint)
 as
 begin
-Update CricketerDetails set CricketerName=@CricketerName, TotalODI=@TotalODI, TotalScore=@TotalScore, Fifties=@Fifties,Hundreds=@Hundreds 
+Update CricketerDetails set CricketerName=@CricketerName, TotalODI=@TotalODI, TotalScore=@TotalScore, Fifties=@Fifties,Hundreds=@Hundreds ,LocationId=@LocationId
 where CricketerId=@CricketerId
 end
-exec UpdateSP 3,'dhoni',290,9876,30,21
+exec UpdateSP 3,'dhoni',290,9876,30,21,1
 
 select * from CricketerDetails
 

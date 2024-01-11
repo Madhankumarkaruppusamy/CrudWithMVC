@@ -122,8 +122,7 @@ namespace DapperDataAccessLayer
             {
                 var con = new SqlConnection(connectionString);
                 con.Open();
-                var updateQuery = $"exec UpdateSP  '{prd.CricketerName}',{prd.TotalODI},{prd.TotalScore},{prd.Fifties},{prd.Hundreds},{prd.LocationId} ";
-                var product = con.Execute(updateQuery);
+                var updateQuery = $"exec UpdateSP  {cricketerId},'{prd.CricketerName}',{prd.TotalODI},{prd.TotalScore},{prd.Fifties},{prd.Hundreds},{prd.LocationId} ";
                 con.Execute(updateQuery);
                 con.Close();
 
