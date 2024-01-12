@@ -95,4 +95,14 @@ exec InsertLocation 'Kolkata'
 exec InsertLocation 'Mumbai'
 exec InsertLocation 'Hyderabad'
 
-
+select * from Registration
+truncate table registration
+go 
+create procedure
+InsertRegister
+(@Username nvarchar(max),@Password nvarchar(max))
+as
+begin
+insert into Registration values (@Username,@Password)
+end
+exec InsertRegister 'madhan','1234'
