@@ -11,7 +11,7 @@ namespace MVCMadhan.Controllers
     {
         public IActionResult Index()
         {
-            return View("View");
+            return View("Login");
         }
     }
 }

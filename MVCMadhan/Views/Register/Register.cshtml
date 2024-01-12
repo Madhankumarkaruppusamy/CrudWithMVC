@@ -1,5 +1,7 @@
-﻿@model DapperDataAccessLayer.Cricketer
+﻿@model EntityFrameworkMVC.Registration
+
 @{
+    ViewData["Title"] = "Register";
     Layout = null;
 }
 
@@ -62,9 +64,9 @@ h2 {
   background: #fff;
   padding: 30px;
   width: 90%;
-  max-width: 450px;
+ @* max-width: 450px;*@
   position: relative;
-  padding: 0px;
+  padding: 90px;
   -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
   box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
   text-align: center;
@@ -95,11 +97,12 @@ input[type=button], input[type=submit], input[type=reset]  {
   display: inline-block;
   text-transform: uppercase;
   font-size: 13px;
+  cursor:pointer;
   -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
   box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
   -webkit-border-radius: 5px 5px 5px 5px;
   border-radius: 5px 5px 5px 5px;
-  margin: 5px 20px 40px 20px;
+  margin: 10px 20px 20px 20px;
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
   -ms-transition: all 0.3s ease-in-out;
@@ -259,30 +262,35 @@ input[type=text]:placeholder {
 
 
 </head>
-<body>
 
+<h1>SignUp</h1>
 
-    <div class="wrapper fadeInDown">
-        <div id="formContent">
-
-
-            <form asp-controller="Home" asp-action="Index">
-                <div class="name">
-                    <h2 style="color:black;"><strong>WELCOME TO LOGIN PAGE</strong></h2>
-                </div>
-
-                <input type="text" id="login" class="fadeIn second" name="login" placeholder="EmailID" required>
-                <input type="password" id="password" name="login" placeholder="Password" required>
-                <input type="submit" class="fadeIn fourth" value="Log In">
-            </form>
-
-
-
+<h4>Create Your New Account Here</h4>
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="Register">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Username" class="control-label"></label>
+                        <input asp-for="Username" class="form-control" placeholder="Email" />
+                        <span asp-validation-for="Username" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Password" class="control-label"></label>
+                        <input asp-for="Password" class="form-control" placeholder="Password" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-danger" asp-controller="Register" asp-action="Create" />
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</body>
-</html>
+</div>
 
-@*//.name {
-            background-image: url(C:\Users\Admin\Downloads\Backgroundimage.jpg);
-        }*@
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

@@ -8,7 +8,7 @@ namespace EntityFrameworkMVC
 {
     public interface IRegistrationRepository
     {
-        public bool Login(string username, string password);
+        public bool Login(Registration check);
         public void Insert(Registration product);
         public void Update(Registration register);
         public Registration GetProductByNumber(long number);

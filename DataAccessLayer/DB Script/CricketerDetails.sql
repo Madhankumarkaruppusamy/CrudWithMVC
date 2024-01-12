@@ -40,7 +40,7 @@ begin
 Update CricketerDetails set CricketerName=@CricketerName, TotalODI=@TotalODI, TotalScore=@TotalScore, Fifties=@Fifties,Hundreds=@Hundreds ,LocationId=@LocationId
 where CricketerId=@CricketerId
 end
-exec UpdateSP 3,'dhoni',290,9876,30,21,1
+exec UpdateSP 3,'dhoni',290,9876,30,21,4
 
 select * from CricketerDetails
 

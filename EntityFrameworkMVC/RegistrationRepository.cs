@@ -18,7 +18,7 @@ namespace EntityFrameworkMVC
         {
             try
             {
-                _contxt.Database.ExecuteSqlRaw($"exec insertregister'{register.Username}','{register.Password}'");
+                _contxt.Database.ExecuteSqlRaw($"exec InsertRegister'{register.Username}','{register.Password}'");
             }
             catch(Exception ex)
             {
@@ -26,15 +26,15 @@ namespace EntityFrameworkMVC
             }
         }
 
-        public bool Login(string username, string password)
+        public bool Login(Registration check)
         {
             try
             {
-                var result = _contxt.Registration.FromSqlRaw<Registration>("").ToList();
-                if (result != null || result.Count > 0)
-                    return true;
-                else
+                var result = _contxt.Registration.FromSqlRaw<Registration>($"select * from Registration where Username='{check.Username}'").ToList();
+                if (result == null || result.Count > 0)
                     return false;
+                else
+                    return true;
             }
             catch (Exception ex)
             {
