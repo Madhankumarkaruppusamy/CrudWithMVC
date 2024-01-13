@@ -11,7 +11,7 @@ namespace EntityFrameworkMVC
     {
         [Key]
         public long RegistrationId { get; set; }
-        public string Username { get; set; }
+        public string Username { get; set; } 
 
         public string Password { get; set; }
        // public IEnumerable<Registration> Registrations { get; set; }

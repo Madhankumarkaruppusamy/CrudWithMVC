@@ -9,10 +9,11 @@ namespace EntityFrameworkMVC
     public interface IRegistrationRepository
     {
         public bool Login(Registration check);
+        public IEnumerable<Registration> GetAllRegistration();
         public void Insert(Registration product);
         public void Update(Registration register);
-        public Registration GetProductByNumber(long number);
-        public IEnumerable<Registration> GetAllRegistration();
+        public List<Registration> GetByNumber(long id);
+        public List<Registration> Delete(long id);
         public bool Register(Registration register);
     }
 }

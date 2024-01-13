@@ -41,6 +41,20 @@ namespace EntityFrameworkMVC
                 throw;
             }
         }
+        public IEnumerable<Registration> GetAllRegistration()
+        {
+              try
+              {
+                  var result = _contxt.Registration.FromSqlRaw<Registration>($"select * from Registration");
+                return result.ToList(); 
+
+              }
+              catch (Exception )
+              {
+                  throw;
+              }
+        }
+
 
         public void Update(Registration register)
         {
@@ -53,21 +67,43 @@ namespace EntityFrameworkMVC
                 throw;
             }
         }
+        public List<Registration> GetByNumber(long id)
+        {
+            try
+            {
+                var result = _contxt.Registration.FromSqlRaw<Registration>($"select * from Registration where RegistrationId={id}");
+                return result.ToList(); 
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+        }
+        public List<Registration> Delete(long id)
+        {
+            try
+            {
+                var result = _contxt.Registration.FromSqlRaw<Registration>($"exec delete from Registration where RegistrationId={id}");
+                return result.ToList();
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+        }
 
 
         public bool Register(Registration register)
         {
             throw new NotImplementedException();
         }
-        public IEnumerable<Registration> GetAllRegistration()
-        {
-            throw new NotImplementedException();
-        }
+       
 
-        public Registration GetProductByNumber(long number)
-        {
-            throw new NotImplementedException();
-        }
+       
 
     }
 }

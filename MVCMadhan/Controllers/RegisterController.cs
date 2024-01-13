@@ -21,7 +21,8 @@ namespace MVCMadhan.Controllers
         // GET: RegisterController
         public ActionResult Index()
         {
-            return View();
+            var result = _add.GetAllRegistration();
+            return View("View",result);
         }
 
         // GET: RegisterController/Details/5
@@ -83,18 +84,20 @@ namespace MVCMadhan.Controllers
         }
 
         // GET: RegisterController/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(long id)
         {
-            return View();
+            var result = _add.GetByNumber(id);
+            return View("Delete",result);
         }
 
         // POST: RegisterController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Deletebyid(long id)
         {
             try
             {
+                _add.Delete(id);
                 return RedirectToAction(nameof(Index));
             }
             catch
