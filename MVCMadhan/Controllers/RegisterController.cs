@@ -26,9 +26,17 @@ namespace MVCMadhan.Controllers
         }
 
         // GET: RegisterController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(long id)
         {
-            return View();
+            try 
+            { 
+            var result = _add.GetByid(id);
+            return View("Detials",result);
+             }
+            catch
+            {
+                return View("Error");
+            }
         }
 
         // GET: RegisterController/Create
@@ -65,44 +73,62 @@ namespace MVCMadhan.Controllers
         // GET: RegisterController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            try
+            {
+                var result = _add.GetByid(id);
+                return View("Edit", result);
+            }
+            catch
+            {
+                return View("Error");
+            }
         }
 
         // POST: RegisterController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, Registration value)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                _add.Update(id, value);
+                var result = _add.GetAllRegistration();
+                return View("View",result);
             }
             catch
             {
-                return View();
+                return View("Error");
             }
         }
 
         // GET: RegisterController/Delete/5
         public ActionResult Delete(long id)
         {
-            var result = _add.GetByNumber(id);
-            return View("Delete",result);
+            try
+            {
+                var result = _add.GetByid(id);
+                return View("Delete", result);
+            }
+            catch
+            {
+                return View("Error");
+            }
         }
 
         // POST: RegisterController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Deletebyid(long id)
+        public ActionResult Deletebyid(long RegistrationId)
         {
             try
             {
-                _add.Delete(id);
-                return RedirectToAction(nameof(Index));
+                _add.Delete(RegistrationId);
+                var result = _add.GetAllRegistration();
+                return View("View",result);
             }
             catch
             {
-                return View();
+                return View("Error");
             }
         }
     }

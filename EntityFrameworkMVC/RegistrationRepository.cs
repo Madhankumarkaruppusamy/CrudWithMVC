@@ -56,7 +56,7 @@ namespace EntityFrameworkMVC
         }
 
 
-        public void Update(Registration register)
+        public void Update(long id, Registration value)
         {
             try
             {
@@ -67,12 +67,12 @@ namespace EntityFrameworkMVC
                 throw;
             }
         }
-        public List<Registration> GetByNumber(long id)
+        public Registration GetByid(long id)
         {
             try
             {
-                var result = _contxt.Registration.FromSqlRaw<Registration>($"select * from Registration where RegistrationId={id}");
-                return result.ToList(); 
+                var result = _contxt.Registration.FromSqlRaw<Registration>($"exec delete * from Registration where RegistrationId={id}").ToList().FirstOrDefault();
+                return result; 
 
             }
             catch (Exception)
@@ -81,12 +81,12 @@ namespace EntityFrameworkMVC
             }
 
         }
-        public List<Registration> Delete(long id)
+        public void Delete(long id)
         {
             try
             {
-                var result = _contxt.Registration.FromSqlRaw<Registration>($"exec delete from Registration where RegistrationId={id}");
-                return result.ToList();
+                var result = _contxt.Database.ExecuteSqlRaw($"exec delete from Registration where RegistrationId={id}");
+                
 
             }
             catch (Exception)

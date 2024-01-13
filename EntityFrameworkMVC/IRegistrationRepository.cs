@@ -11,9 +11,9 @@ namespace EntityFrameworkMVC
         public bool Login(Registration check);
         public IEnumerable<Registration> GetAllRegistration();
         public void Insert(Registration product);
-        public void Update(Registration register);
-        public List<Registration> GetByNumber(long id);
-        public List<Registration> Delete(long id);
+        public void Update(long id,Registration value);
+        public Registration GetByid(long id);
+        public void Delete(long id);
         public bool Register(Registration register);
     }
 }
