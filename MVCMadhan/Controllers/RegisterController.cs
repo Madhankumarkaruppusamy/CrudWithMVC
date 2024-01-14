@@ -31,7 +31,7 @@ namespace MVCMadhan.Controllers
             try 
             { 
             var result = _add.GetByid(id);
-            return View("Detials",result);
+            return View("Details",result);
              }
             catch
             {

@@ -60,7 +60,7 @@ namespace EntityFrameworkMVC
         {
             try
             {
-                _contxt.Database.ExecuteSqlRaw("sp");
+                _contxt.Database.ExecuteSqlRaw($" update Registration set Username='{value.Username}',Password='{value.Password}' where RegistrationId={id}");
             }
             catch(Exception ex)
             {
@@ -71,7 +71,7 @@ namespace EntityFrameworkMVC
         {
             try
             {
-                var result = _contxt.Registration.FromSqlRaw<Registration>($"exec delete * from Registration where RegistrationId={id}").ToList().FirstOrDefault();
+                var result = _contxt.Registration.FromSqlRaw<Registration>($"select * from Registration where RegistrationId= {id}").ToList().FirstOrDefault();
                 return result; 
 
             }
@@ -85,7 +85,7 @@ namespace EntityFrameworkMVC
         {
             try
             {
-                var result = _contxt.Database.ExecuteSqlRaw($"exec delete from Registration where RegistrationId={id}");
+                var result = _contxt.Database.ExecuteSqlRaw($" delete Registration where RegistrationId={id}");
                 
 
             }
@@ -99,7 +99,22 @@ namespace EntityFrameworkMVC
 
         public bool Register(Registration register)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var result = _contxt.Registration.FromSqlRaw<Registration>($"select * from Regitration where Username='{register.Username}' And Password='{register.Password}'").ToList();
+                if(result.Count == 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch(Exception ex)
+            {
+                throw;
+            }
         }
        
 
