@@ -11,6 +11,7 @@ namespace EntityFrameworkMVC
     {
         [Key]
         public long RegistrationId { get; set; }
+        [Required (ErrorMessage ="Enter Your EmailID")]
         public string Username { get; set; } 
 
         public string Password { get; set; }
