@@ -60,7 +60,8 @@ namespace EntityFrameworkMVC
         {
             try
             {
-                _contxt.Database.ExecuteSqlRaw($" update Registration set Username='{value.Username}',Password='{value.Password}' where RegistrationId={id}");
+                var result =_contxt.Database.ExecuteSqlRaw($" update Registration set Username='{value.Username}',Password='{value.Password}' where RegistrationId={id}");
+                
             }
             catch(Exception ex)
             {
@@ -71,8 +72,8 @@ namespace EntityFrameworkMVC
         {
             try
             {
-                var result = _contxt.Registration.FromSqlRaw<Registration>($"select * from Registration where RegistrationId= {id}").ToList().FirstOrDefault();
-                return result; 
+                var result = _contxt.Registration.FromSqlRaw<Registration>($"select * from Registration where RegistrationId= {id}");
+                return result.ToList().FirstOrDefault(); 
 
             }
             catch (Exception)
@@ -101,7 +102,7 @@ namespace EntityFrameworkMVC
         {
             try
             {
-                var result = _contxt.Registration.FromSqlRaw<Registration>($"select * from Regitration where Username='{register.Username}' And Password='{register.Password}'").ToList();
+                var result = _contxt.Registration.FromSqlRaw<Registration>($"select * from Registration where Username='{register.Username}' And Password='{register.Password}'").ToList();
                 if(result.Count == 1)
                 {
                     return true;

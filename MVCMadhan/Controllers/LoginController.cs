@@ -115,11 +115,13 @@ namespace MVCMadhan.Controllers
                 return View();
             }
         }
-        /*public ActionResult Authentication(Login log)
+
+        // GET: LoginController/Authentication/
+        public ActionResult Authentication(Registration log)
         {
             try
             {
-                var result = _reg.Login();
+                var result = _reg.Register(log);
                 if (result = true)
                 {
                     return Redirect("/Home/Index");
@@ -132,6 +134,10 @@ namespace MVCMadhan.Controllers
                 }
             
             }
-        }*/
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }
