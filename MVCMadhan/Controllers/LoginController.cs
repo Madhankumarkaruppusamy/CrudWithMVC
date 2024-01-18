@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Login = EntityFrameworkMVC.Login;
 
 namespace MVCMadhan.Controllers
 {
@@ -116,20 +117,20 @@ namespace MVCMadhan.Controllers
             }
         }
 
-        // GET: LoginController/Authentication/
-        public ActionResult Authentication(Registration log)
+      
+        public ActionResult Authentication(Login log)
         {
             try
             {
-                var result = _reg.Register(log);
-                if (result = true)
+                var result = _reg.Login(log.EmailID,log.Password);
+                if (result == true)
                 {
                     return Redirect("/Home/Index");
 
                 }
                 else
                 {
-                    ModelState.AddModelError("Password", "Invalid EmailID and Password");
+                    ModelState.AddModelError("Password", "Password is incorrect");
                     return View("Login");
                 }
             

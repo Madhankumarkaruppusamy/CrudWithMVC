@@ -4,23 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel;
 
-namespace DapperDataAccessLayer
+namespace EntityFrameworkMVC
 {
-    public class Login
+   public  class Login
     {
 
         [Required]
-        [EmailAddress(ErrorMessage = "Enter Valid Email ID")]
+        [EmailAddress(ErrorMessage = "Required valid Emailid")]
         public string EmailID { get; set; }
 
         [Required]
-        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8}$",
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z]){8-20}$",
          ErrorMessage = "Password must meet requirements")]
-        public string Password {get; set;} 
-
-
-
+        public string Password { get; set; }
     }
 }

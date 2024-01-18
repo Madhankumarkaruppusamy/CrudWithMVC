@@ -12,9 +12,10 @@ namespace EntityFrameworkMVC
         [Key]
         public long RegistrationId { get; set; }
         [Required (ErrorMessage ="Enter Your EmailID")]
-        public string Username { get; set; } 
-
+        public string Username { get; set; }
+        [Required]
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z]).{8-20}$",
+      ErrorMessage = "Password must meet requirements")]
         public string Password { get; set; }
-       // public IEnumerable<Registration> Registrations { get; set; }
     }
 }

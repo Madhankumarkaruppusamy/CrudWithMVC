@@ -1,4 +1,4 @@
-﻿@model EntityFrameworkMVC.Registration
+﻿@model EntityFrameworkMVC.Login
 @{
     Layout = null;
 }
@@ -267,20 +267,20 @@ input[type=text]:placeholder {
         <div id="formContent">
 
 
-            <form asp-controller="Login" asp-action="Authentication">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <form asp-action="Authentication" method="post">
+               
                 <div class="name">
                     <h2 style="color:black;"><strong>WELCOME TO LOGIN PAGE</strong></h2>
                 </div>
-                <div class="form-group">
-                <input type="text" asp-for="Username"  id="login" class="fadeIn second" name="login" placeholder="EmailID" required>
-                <span asp-validation-for="Username"></span>
+                <div>
+                <input type="text" asp-for="EmailID"  id="login" class="form-control" name="EmailID" placeholder="EmailID" required>
+                <span asp-validation-for="EmailID"></span>
                 </div>
-                <div class="form-group">
-                    <input type="password" asp-for="Password" id="password" name="login" placeholder="Password" required>
+                <div >
+                    <input type="password" asp-for="Password" id="password" class="form-control" name="Password" placeholder="Password" required>
                     <span asp-validation-for="Password"></span>
                 </div>
-                <input type="submit" class="fadeIn fourth" value="LogIn"><br>
+                <input type="submit" value="LogIn"><br>
                 <div>
                     <a class="btn-group-vertical"  asp-controller="Register" asp-action="Create"><strong>SignUp</strong></a>
                 </div>

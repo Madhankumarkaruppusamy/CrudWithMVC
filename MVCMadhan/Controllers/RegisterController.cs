@@ -51,7 +51,7 @@ namespace MVCMadhan.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Registration value)
         {
-            var result = _add.Login(value);
+            var result = _add.Register(value);
             try
             {
                 if (result == true)

@@ -106,3 +106,5 @@ begin
 insert into Registration values (@Username,@Password)
 end
 exec InsertRegister 'madhan','1234'
+
+
