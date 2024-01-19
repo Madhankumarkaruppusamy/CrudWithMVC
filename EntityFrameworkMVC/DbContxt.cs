@@ -13,6 +13,6 @@ namespace EntityFrameworkMVC
         {
 
         }
-        public DbSet<Registration> Registration { get; set; }
+        public  DbSet<Registration> Registration { get; set; }
     }
 }
