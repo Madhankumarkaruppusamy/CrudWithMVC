@@ -26,8 +26,7 @@ namespace MVCMadhan
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<DbContxt>(x => x.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
-            services.AddTransient<IRegistrationRepository, RegistrationRepository>();
+            services.AddDbContext<DbContxt>(x => x.UseSqlServer(Configuration.GetConnectionString("DbConnection")));            services.AddTransient<IRegistrationRepository, RegistrationRepository>();
             services.AddTransient<ILocationRepository, LocationRepository>();
             services.AddTransient<ICricketerRepository, CricketerRepository>();
             services.AddControllersWithViews();
